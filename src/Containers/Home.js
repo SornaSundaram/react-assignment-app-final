@@ -1,15 +1,17 @@
 import React from 'react';
 import { Layout } from 'antd';
-import Navigation from '../Components/Navigation';
+import NavigationPanel from '../Components/Navigation';
 import ContentPanel from '../Components/ContentPanel';
+import FooterPanel from '../Components/FooterPanel';
 
 const home = () => {
 
     return (
         <div>
             
-            <Navigation></Navigation>
+            <NavigationPanel></NavigationPanel>
             <ContentPanel></ContentPanel>
+            <FooterPanel></FooterPanel>
         </div>
     )
 };
