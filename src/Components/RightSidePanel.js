@@ -1,89 +1,92 @@
 import React from 'react';
 import { Col } from 'antd';
+import timeTrackerLogo from '../images/time_track_logo.png';
 
 
 const rightSidePanel = () => {
 
     return (
+               
         <div>
-            <Col span={6}>
-                <div >
-                    <div >
-                        
-                        <h4 style={{ fontSize: '18px' }}>Track time on Hubstaff</h4>
-                        <div >Pay only for the hours worked</div>
-                        <a href="https://talent.hubstaff.com/signup?message=" target="">Sign Up</a>
-                        <a href="/" target="">Learn more...</a>
-                    </div>
-                    <div >
-                        <h5 >
-                            <span >Top jobs</span>
-                        </h5>
-                        <ul >
-                            <li >
-                                <div >
-                                    <div >
-                                        <a  href="/">Senior Ruby on Rails Engineer</a>
-                                    </div>
-                                    <div >
-                                        <div >60$/hr</div>
-                                    </div>
-                                </div>
-                                <div >
-                                    content coming
-                                                        </div>
-                            </li>
-                            <li>
-                                <div >
-                                    <div >
-                                        <a href="/">Senior Product Designer </a>
-                                    </div>
-                                    <div >
-                                        <div >45$/hr</div>
-                                    </div>
-                                </div>
-                                <div >
-                                    content coming
-                                                        </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div >
-                        <h5 >
-                            <span >Most Viewed this Week</span>
-                        </h5>
-                        <ul >
-                            <li >
-                                <div >
-                                    <div >
-                                        <a href="/">Senior Ruby on Rails Engineer</a>
-                                    </div>
-                                    <div >
-                                        <div >60$/hr</div>
-                                    </div>
-                                </div>
-                                <div >
-                                    content coming
-                                                        </div>
-                            </li>
-                            <li >
-                                <div >
-                                    <div >
-                                        <a >Senior Product Designer </a>
-                                    </div>
-                                    <div >
-                                        <div >45$/hr</div>
-                                    </div>
-                                </div>
-                                <div >
-                                    content coming
-                                                        </div>
-                            </li>
-                        </ul>
-                    </div>
+        <Col span={6}>
+            <div className="filters-sidebar-inner">
+                <div className="signUpArea">
+                    <img src={timeTrackerLogo} className='timetrackerlogo' alt='timetracker_logoImage' />
+                    <h4 style={{ fontSize: '18px' }}>Track time on Hubstaff</h4>
+                    <div class="hs-lead">Pay only for the hours worked</div>
+                    <a className="btn btn-primary btn-130" href="https://talent.hubstaff.com/signup?message=" target="">Sign Up</a>
+                    <a className="textInSignUp" href="/" target="">Learn more...</a>
                 </div>
-            </Col>
-        </div>
+                <div className="sidebar-section">
+                    <h5 className="section-subtitle-right from-sidebar">
+                        <span className="pull-left">Top jobs</span>
+                    </h5>
+                    <ul className="list-unstyled">
+                        <li className="sidebar-job">
+                            <div className="row">
+                                <div className="col-sm-8">
+                                    <a className="name" href="/">Senior Ruby on Rails Engineer</a>
+                                </div>
+                                <div className="col-sm-4 text-right">
+                                    <div className="pay-rate">60$/hr</div>
+                                </div>
+                            </div>
+                            <div className="description">
+                                content
+                                                    </div>
+                        </li>
+                        <li className="sidebar-job">
+                            <div className="row">
+                                <div className="col-sm-8">
+                                    <a className="name" href="/">Senior Product Designer </a>
+                                </div>
+                                <div className="col-sm-4 text-right">
+                                    <div className="pay-rate">45$/hr</div>
+                                </div>
+                            </div>
+                            <div className="description">
+                                content
+                                                    </div>
+                        </li>
+                    </ul>
+                </div>
+                <div className="sidebar-section">
+                    <h5 className="section-subtitle-right from-sidebar">
+                        <span className="pull-left">Most Viewed this Week</span>
+                    </h5>
+                    <ul className="list-unstyled">
+                        <li className="sidebar-job">
+                            <div className="row">
+                                <div className="col-sm-8">
+                                    <a className="name" href="/">Senior Ruby on Rails Engineer</a>
+                                </div>
+                                <div className="col-sm-4 text-right">
+                                    <div className="pay-rate">60$/hr</div>
+                                </div>
+                            </div>
+                            <div className="description">
+                                content
+                                                    </div>
+                        </li>
+                        <li className="sidebar-job">
+                            <div className="row">
+                                <div className="col-sm-8">
+                                    <a className="name" href="/">Senior Product Designer </a>
+                                </div>
+                                <div className="col-sm-4 text-right">
+                                    <div className="pay-rate">45$/hr</div>
+                                </div>
+                            </div>
+                            <div className="description">
+                                content
+                                                    </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </Col>
+    </div>
+
     );
 };
 
