@@ -37,7 +37,7 @@ const Contentpanel = () => {
                     <div className="container">
                         <JobResults jobdata = {data}></JobResults>
                     </div>
-                    <div className="pagination-container">
+                    <div>
                     <Pagination defaultCurrent={1} total={50} />
                     </div>
                 </Content>

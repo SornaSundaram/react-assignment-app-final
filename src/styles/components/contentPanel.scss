@@ -94,6 +94,7 @@ width: 60%;
 
 .filters-sidebar-inner{
   display: flex;
+  flex-direction: column;
 }
 
 .form-group{
@@ -209,6 +210,9 @@ label {
 .signUpArea{
   height: 250px;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .timetrackerlogo{
@@ -360,11 +364,15 @@ ul, ol {
   color: #617083;
 }
 
-.main-details {
+.main-details  {
   width: 100%;
   float: left;
   padding-bottom: 30px;
   border-bottom: 1px solid #ced9ee;
+}
+
+.main-details:last-child { 
+  border-bottom: none; 
 }
 
 .name {

@@ -31,7 +31,7 @@ const rightSidePanel = () => {
                                     </div>
                                 </div>
                                 <div className="description">
-                                   content
+                                   Description:Hubstaff makes managing teams and remote work easy. We are a rapidly gr...
                                 </div>
                             </li>
                             <li className="sidebar-job">
@@ -44,7 +44,7 @@ const rightSidePanel = () => {
                                     </div>
                                 </div>
                                 <div className="description">
-                                   content
+                                   Description:Hubstaff makes managing teams and remote work easy. We are a rapidly gr...
                                 </div>
                             </li>
                         </ul>
@@ -64,7 +64,7 @@ const rightSidePanel = () => {
                                     </div>
                                 </div>
                                 <div className="description">
-                                   content
+                                   Description:Hubstaff makes managing teams and remote work easy. We are a rapidly gr...
                                 </div>
                             </li>
                             <li className="sidebar-job">
@@ -77,7 +77,7 @@ const rightSidePanel = () => {
                                     </div>
                                 </div>
                                 <div className="description">
-                                   content
+                                   Description:Hubstaff makes managing teams and remote work easy. We are a rapidly gr...
                                 </div>
                             </li>
                         </ul>

@@ -15,7 +15,7 @@ const dataSortPanel = (props) => {
                 <Col span={12} >
                     <div className="content-section">
                         <div className="col-sm-12">
-                            <div className="section-subtitle no-margin pull-left">Results()</div>
+                            <div className="section-subtitle no-margin pull-left">Results({props.items.length})</div>
                             <div className="sort_by">
                                 <span className="labelclass">Sort by</span>
                                 <div className="custom-select-wrapper sort-results-select">
