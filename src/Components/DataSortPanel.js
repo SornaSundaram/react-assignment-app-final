@@ -3,7 +3,11 @@ import { Col, Select } from 'antd';
 import DataPanel from './DataPanel';
 
 const Option = Select.Option;
-const dataSortPanel = () => {
+const dataSortPanel = (props) => {
+
+    console.log('afterprops');
+    console.log(props.items);
+    console.log(props.items.map(item => console.log('working')));
 
     return (
 
@@ -26,7 +30,8 @@ const dataSortPanel = () => {
                         </div>
                         <div className="search-result">
                         {
-                            <DataPanel></DataPanel>
+                            props.items.map((item) =><DataPanel key={item} data={item} />)
+                            
                         }
                         </div>
                     </div>

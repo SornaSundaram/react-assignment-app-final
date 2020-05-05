@@ -9,14 +9,19 @@ const { Content } = Layout;
 const Contentpanel = () => {
 
     console.log('data loading');
-    const [data, setData] = useState({});
+    const [data, setData] = useState([]);
 
-    useEffect(async () => {
-        const result = await axios(
-          'https://hn.algolia.com/api/v1/search?query=redux',
-        );
+    useEffect(() => {
+       
+        async function fetchData() {
+
+            const result = await axios(
+                '/',
+              );
+            setData(result.data);  
+        }
      
-        setData(result.data);
+        fetchData();
       }, []);
      
 
@@ -30,7 +35,7 @@ const Contentpanel = () => {
                         <SearchBar></SearchBar>
                     </div>
                     <div className="container">
-                        <JobResults></JobResults>
+                        <JobResults jobdata = {data}></JobResults>
                     </div>
                     <div className="pagination-container">
                     <Pagination defaultCurrent={1} total={50} />
