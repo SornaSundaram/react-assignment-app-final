@@ -133,4 +133,6 @@ const filterPanel = () => {
                 </div>
             </div>
         );
-}
+};
+
+export default filterPanel;
