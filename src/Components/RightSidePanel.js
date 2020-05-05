@@ -31,8 +31,7 @@ const rightSidePanel = () => {
                                     </div>
                                 </div>
                                 <div className="description">
-                                    Description:Hubstaff makes managing teams and remote work easy. We are a rapidly
-                                    gr...
+                                   content
                                 </div>
                             </li>
                             <li className="sidebar-job">
@@ -45,8 +44,7 @@ const rightSidePanel = () => {
                                     </div>
                                 </div>
                                 <div className="description">
-                                    Description:Hubstaff makes managing teams and remote work easy. We are a rapidly
-                                    gr...
+                                   content
                                 </div>
                             </li>
                         </ul>
@@ -66,8 +64,7 @@ const rightSidePanel = () => {
                                     </div>
                                 </div>
                                 <div className="description">
-                                    Description:Hubstaff makes managing teams and remote work easy. We are a rapidly
-                                    gr...
+                                   content
                                 </div>
                             </li>
                             <li className="sidebar-job">
@@ -80,8 +77,7 @@ const rightSidePanel = () => {
                                     </div>
                                 </div>
                                 <div className="description">
-                                    Description:Hubstaff makes managing teams and remote work easy. We are a rapidly
-                                    gr...
+                                   content
                                 </div>
                             </li>
                         </ul>
