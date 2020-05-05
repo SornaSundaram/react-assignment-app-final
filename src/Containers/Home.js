@@ -8,10 +8,15 @@ const home = () => {
 
     return (
         <div>
-            
+            <Layout className="parentLayout">
             <NavigationPanel></NavigationPanel>
+            <div style={{display: "flex", flexDirection: "column"}}>
             <ContentPanel></ContentPanel>
             <FooterPanel></FooterPanel>
+            </div>
+            
+            </Layout>
+            
         </div>
     )
 };

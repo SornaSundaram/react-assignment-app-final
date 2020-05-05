@@ -1,2 +1,76 @@
-@import 'components/all';
 @import 'base/all';
+@import 'components/all';
+
+html {
+  height: 100% !important;              /* for the page to take full window height */
+  box-sizing: border-box !important;    /* to have the footer displayed at the bottom of the page without scrolling */
+}
+
+
+
+body {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333333;
+  background-color: #fff;
+}
+@font-face {
+	font-family: "hubstaff-icons";
+	src: url("./fonts/hubstaff-icons-517585124a198d25ad8c6d7f5eb1af415d67ce002ba317863aa744aad8ac26ce.woff2") format("woff2");
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit !important;       /* enable the "border-box effect" everywhere */
+}
+
+.h4{
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.hs-lead{
+  color: #617083;
+  font-size: 13px;
+  margin-top: -7px;
+}
+
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 9px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 3px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  color: #ffffff;
+  background-color: #55a8fd;
+  border-color: #3c9bfd;
+}
+
+.btn-130 {
+  min-width: 130px;
+}
+
+a{
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: #ffffff;
+}

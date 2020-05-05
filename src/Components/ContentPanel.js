@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Layout,Pagination } from 'antd';
 import SearchBar from './SearchPanel';
 import axios from '../ApiJobData';
@@ -6,25 +6,37 @@ import JobResults from './JobResults';
 
 const { Content } = Layout;
 
-const contentpanel = () => {
+const Contentpanel = () => {
 
     console.log('data loading');
-    axios.get('/').then(response => console.log(response));
+    const [data, setData] = useState({});
+
+    useEffect(async () => {
+        const result = await axios(
+          'https://hn.algolia.com/api/v1/search?query=redux',
+        );
+     
+        setData(result.data);
+      }, []);
+     
+
+
+  console.log(data);
+  
+    
     return (
-        <div>
-                <Content>
-                    <div>
+        <Content>
+                    <div className="container">
                         <SearchBar></SearchBar>
                     </div>
-                    <div>
+                    <div className="container">
                         <JobResults></JobResults>
                     </div>
-                    <div>
-                        <Pagination></Pagination>
+                    <div className="pagination-container">
+                    <Pagination defaultCurrent={1} total={50} />
                     </div>
                 </Content>
-            </div>
     );
 };
 
-export default contentpanel;
+export default Contentpanel;

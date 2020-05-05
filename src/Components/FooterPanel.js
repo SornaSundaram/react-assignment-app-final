@@ -7,11 +7,9 @@ const footer = () => {
 
     return (
 
-        <div>
         <Footer>
-            <div className="container">Data to be populated soon.</div>
-        </Footer>
-    </div> 
+                <p>Data to be populated soon.</p>
+            </Footer>
     );
 };
 
