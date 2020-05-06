@@ -15,7 +15,7 @@ const dataPanel = (props) => {
                     <div style={{float:'left',clear:'left'}}>
                         <a className="is-inline-block job-agency margin-right-20" target="" href="http://tutortroops.com"><i className="hi hi-agency" title="Client"></i> Tutor Tropps</a>
                         <span className="location text-success margin-right-20">
-                            <i class="hi hi-pin" title="From"></i>
+                            <i className="hi hi-pin" title="From"></i>
                             {props.data.location}
                         </span>
                     </div>
@@ -29,7 +29,7 @@ const dataPanel = (props) => {
                 <div className="list-inline push-bottom-20">
                 {
                     props.data.requiredSkills && props.data.requiredSkills.split(',').map((skill) =>
-                    <li><Tag style={{ marginTop: '20px' }}><a href="/">{skill.trim()}</a></Tag></li>
+                    <li key ={skill}><Tag style={{ marginTop: '20px' }}><a href="/">{skill.trim()}</a></Tag></li>
                 )
                 }
                 </div>

@@ -1,27 +1,62 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Menu, Col, Select, Checkbox, Dropdown, Button, Slider, InputNumber } from 'antd';
 import Icon from '@ant-design/icons';
 
-const filterPanel = () => {
+const FilterPanel = (props) => {
 
+    console.log('loading');
+    console.log(props);
     const menu = (
         <Menu>
             <Menu.Item key="full-time">
-                <a href="/">Full Time</a>
+            Three years
             </Menu.Item>
             <Menu.Item key="part-time">
-                <a href="/">Part Time</a>
+                Part Time
             </Menu.Item>
             <Menu.Item key="hourly">Hourly</Menu.Item>
         </Menu>
     );
 
+    const [filterValue, setFilterValue] = useState(props.filterObject.state)
+
+    useEffect(() => {
+        console.log('filtering');
+        setFilterValue(props.filterObject.state);
+        
+    }, [props]);
+
+    const onLocationsChange = (loc) => {
+        console.log('working');
+        props.updateLocation(loc);
+    }
+
+    const onJobTypeChange = (type) => {
+        console.log('jobchanged');
+        
+        props.updateJobType(type);
+    }
+
+    const clearJobType = () => {
+        props.updateJobType(null);        
+    }
+
+    const clearLocation = () => {
+        props.updateLocation(null);
+    }
+
     const Option = Select.Option;
 
-        const children = [];
+        const locationsList= [];
+        ['California', 'Chennai', 'Dallas', 'Bangalore', 'New York', 'Texas', 'Hyderabad', 'Philliphines', 'Singapore'].map((skill) => {
+            locationsList.push(<Option key={skill}>{skill}</Option>);
+        });;
+
+        const skillsList = [];
         ['npm','react','webpack','html','js.css','java','spring','kafka','hadoop','spark','scala','oracle','mysql','nginx'].map((skill) => {
-            children.push(<Option key={skill}>{skill}</Option>);
-        });
+            skillsList.push(<Option key={skill}>{skill}</Option>);
+        });;;
+        
 
         return (
 
@@ -43,7 +78,7 @@ const filterPanel = () => {
                                 placeholder="Please select"
                                 defaultValue={[]}
                                 style={{ width: '100%' }}>
-                                {children}
+                                {skillsList.map(skill => <Option key={skill}></Option>)}
                             </Select>
                         </div>
                     </div>
@@ -64,15 +99,25 @@ const filterPanel = () => {
                         <div>
                             <label className="label ">
                                 <span className="labelName">Job type <Icon type="exclamation-circle" /></span>
-                                <span className="clear-link clearAction">Clear</span>
+                                <span className="clear-link clearAction" onClick = {clearJobType}>Clear</span>
                             </label>
                         </div>
                         <div>
-                            <Dropdown overlay={menu} trigger={['click']}>
+                            {/* <Dropdown overlay={menu} trigger={['click']} onChange = {onJobTypeChange}>
                                 <Button>
                                     Select a Job Type <Icon type="down" />
                                 </Button>
-                            </Dropdown>
+                            </Dropdown> */}
+                            <Select
+                             style = {{width: '220px'}}
+                             defaultValue = {filterValue.jobType}
+                             placeholder="Select your Experience level"
+                             onChange = {onJobTypeChange}
+                            >
+                                <Option key= "Full Time" value = "Full Time">Full Time</Option>
+                                <Option key = "Part Time" value = "Part Time">Part Time</Option>
+                                <Option key = "Hourly" value = "Hourly">Hourly</Option>
+                            </Select>
                         </div>
                     </div>
                     <div className="form-group">
@@ -124,23 +169,26 @@ const filterPanel = () => {
                                     Select your Experience level <Icon type="down" />
                                 </Button>
                             </Dropdown>
+                            
                         </div>
                     </div>
                     <div className="form-group">
                         <div>
                             <label className="label">
                                 <span className="labelName">Countries</span>
-                                <span className="clear-link clearAction">Clear</span>
+                                <span className="clear-link clearAction" onClick={clearLocation}>Clear</span>
                             </label>
                         </div>
                         <div>
                             <Select
+                                
+                                onChange = {onLocationsChange}
                                 mode="multiple"
                                 size={"large"}
                                 placeholder="Enter state,province or country"
-                                defaultValue={[]}
+                                
                                 style={{ width: '100%' }}>
-                                {children}
+                                {locationsList}
                             </Select>
                         </div>
                     </div>
@@ -157,7 +205,7 @@ const filterPanel = () => {
                                 size={"large"}
                                 defaultValue={[]}
                                 style={{ width: '100%' }}>
-                                {children}
+                                {skillsList}
                             </Select>
                         </div>
                     </div>
@@ -165,4 +213,4 @@ const filterPanel = () => {
         );
 };
 
-export default filterPanel;
+export default FilterPanel;
