@@ -1,25 +1,24 @@
 .ant-layout {
-    display: flex;
-    flex-direction: column;
-    // flex: auto;
-    background: #f0f2f5;
-    height: 100vh;
-    
+	display: flex;
+	flex-direction: column;
+	// flex: auto;
+	background: #f0f2f5;
+	height: 100vh;
 }
 
 .container {
-    width: 85%;
-	top:0;
+	width: 85%;
+	top: 0;
 	bottom: 0;
 	left: 0;
-	right: 0;	
-	margin: auto
-    // margin-right: auto !important;
-    // margin-left: auto !important;
-  }
+	right: 0;
+	margin: auto;
+	// margin-right: auto !important;
+	// margin-left: auto !important;
+}
 
-  .parentLayout {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-  }
+.parentLayout {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}

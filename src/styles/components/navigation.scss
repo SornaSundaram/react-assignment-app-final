@@ -1,57 +1,62 @@
 .logo {
-    width: 120px;
-    height: 31px;
-    background: rgba(255,255,255,.2);
-    margin: 16px 24px 16px 0;
-    float: left;
+	width: 120px;
+	height: 31px;
+	background: rgba(255, 255, 255, .2);
+	margin: 16px 24px 16px 0;
+	float: left;
 }
 
 .logoApp {
-    height: 21px;
-    margin-top: -30px;
-    width:157px;
+	height: 21px;
+	margin-top: -30px;
+	width: 157px;
 }
 
 .ant-layout-header {
-    background-color: #fff !important;
-    -webkit-box-shadow: 0 2px 4px rgba(0,0,1,0.2) !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 8, 0.2) !important;
-    font-size: 13px !important;
-    width: 100% !important;
-    top: 0 !important;
+	background-color: #fff !important;
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 1, 0.2) !important;
+	box-shadow: 0 2px 4px rgba(0, 0, 8, 0.2) !important;
+	font-size: 13px !important;
+	width: 100% !important;
+	top: 0 !important;
 }
 
-.ant-menu-item{
-  color: #3c495a !important;
-  font-size: 13px;
-  font-family:inherit;
-  font-weight: 500;
+.ant-menu-item {
+	color: #3c495a !important;
+	font-size: 13px;
+	font-family: inherit;
+	font-weight: 500;
 }
 
-.ant-menu-dark, .ant-menu-dark .ant-menu-sub {
-  color: #3c495a !important;
-  background: #ffffff !important;
-  font-weight: 500;
+.ant-menu-dark,
+.ant-menu-dark .ant-menu-sub {
+	color: #3c495a !important;
+	background: #ffffff !important;
+	font-weight: 500;
 }
 
-.ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected{
-    background-color: transparent !important;
-  }
-  
-.ant-menu-horizontal > .ant-menu-item:hover, .ant-menu-horizontal > .ant-menu-item-active, .ant-menu-horizontal > .ant-menu-submenu .ant-menu-submenu-title:hover {
-    color:#3c495a !important;
-}
-  
-.ant-menu-item, .ant-menu-submenu-title{
-    padding: 0px 10px !important;
+.ant-menu.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+	background-color: transparent !important;
 }
 
-.submenu-title-wrapper{
-    font-size: 13px !important;
+.ant-menu-horizontal > .ant-menu-item:hover,
+.ant-menu-horizontal > .ant-menu-item-active,
+.ant-menu-horizontal > .ant-menu-submenu .ant-menu-submenu-title:hover {
+	color: #3c495a !important;
 }
 
-.ant-avatar-image{
-    top:-5px;
-    right:-15px;
-    left:2px;
+.ant-menu-item,
+.ant-menu-submenu-title {
+	padding: 0px 10px !important;
+}
+
+.submenu-title-wrapper {
+	font-size: 13px !important;
+}
+
+.ant-avatar-image {
+	top: -5px;
+	right: -15px;
+	left: 2px;
 }

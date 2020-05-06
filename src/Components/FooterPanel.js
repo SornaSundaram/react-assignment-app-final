@@ -4,13 +4,11 @@ import { Layout } from 'antd';
 const { Footer } = Layout;
 
 const footer = () => {
-
-    return (
-
-        <Footer>
-                <p>Data to be populated soon.</p>
-            </Footer>
-    );
+	return (
+		<Footer>
+			<p>Data to be populated soon.</p>
+		</Footer>
+	);
 };
 
 export default footer;
