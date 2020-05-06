@@ -145,7 +145,13 @@ label {
   padding: 25px 30px;
   height: 100% !important;
   overflow: auto;
-  width: 1000px;
+  width: 980px;
+}
+
+.ant-col-offset-5 {
+  margin-left: 21.2%;
+  margin-top: 2%;
+  margin-bottom: 10%;
 }
 
 .ant-btn{
@@ -502,4 +508,10 @@ a {
 
 .ant-pagination-next{
   float: right !important;
+}
+
+.ant-pagination {
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
 }

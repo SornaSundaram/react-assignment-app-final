@@ -1,5 +1,5 @@
 import React, { useState, useEffect,useRef } from 'react';
-import { Layout,Pagination } from 'antd';
+import { Layout,Pagination, Col } from 'antd';
 import SearchBar from './SearchPanel';
 import axios from '../ApiJobData';
 import JobResults from './JobResults';
@@ -10,10 +10,10 @@ const Contentpanel = () => {
 
     console.log('data loading');
     const [data, setData] = useState([]);
-    const [pageIndex,setPageIndex] = useState({minValue:0, maxValue: 5});
-    const [filter, setFilter] = useState( {state: { jobType: null, location: null}});
+    const [pageIndex,setPageIndex] = useState({minValue:0, maxValue: 5, currentValue: 1});
+    const [filter, setFilter] = useState( {state: { job_type: null, location: null, query: null}});
     const [apiUrl, setApiUrl] = useState({query: {value : '/'}});
-    const [keyword, setKeyword] = useState('');
+   
     
 
     const updateLocation = (locationval) => {
@@ -36,12 +36,12 @@ const Contentpanel = () => {
        
     }
 
-    const updateJobType = (jobTypeVal) => {
+    const updateJobType = (job_typeVal) => {
         
         setFilter(prevObj => ({
             state :{
                 ...prevObj.state,
-                jobType : jobTypeVal 
+                job_type : job_typeVal 
             },
                         
         }));
@@ -52,7 +52,7 @@ const Contentpanel = () => {
     useEffect(() => {
      
         console.log('dataeffect');
-        console.log(apiUrl.query.value);
+        console.log(apiUrl);
         async function fetchData() {   
 
             
@@ -72,34 +72,60 @@ const Contentpanel = () => {
 
       useEffect(() => {
           console.log('urleffect');
-          urlchange();
-      }, [filter, keyword]);
+          
+          let keysListval = Object.keys(filter.state).reduce((val, key) => {
+              
+              if (filter.state[key] != null)
+              {
+                  val.push(key);
+              }
+              return val;
+          }, []);
 
-      const urlchange = () => {
-          console.log('calling first hook');
+          let queryString = keysListval.reduce((acc,cur) => {
+              return acc + cur + '=' + filter.state[cur] + '&';
+          }, ['search?']);
+
+          console.log(typeof(queryString));
+          queryString = String(queryString).substring(0, queryString.length-1);
+          console.log(queryString);
           setApiUrl(prevUrl => ({
             query :{
                 ...prevUrl.query,
-                value : '/search?location='+ filter.state.location 
+                value : queryString
             },
                         
         }));
-      }
+                        
+       
+      }, [filter]);
+
+     
       const onIndexChange = (index) => {
 
-        if (index <= 1)
-        {
-            setPageIndex({minValue:0, maxValue: 5});
-        }
-        else
-        {
-            setPageIndex({minValue:pageIndex.maxValue, maxValue: 5 * index});
-            console.log(pageIndex);
-        }
+        setPageIndex({minValue: index - 1, maxValue: index + 4 , currentValue: index});
+        console.log(index);
+        // if (index <= 1)
+        // {
+        //     setPageIndex({minValue:0, maxValue: 5 , currentValue: 1});
+        // }
+        // else
+        // {
+        //     console.log(index);
+        //     setPageIndex({minValue: pageIndex.minValue + 1, maxValue: pageIndex.maxValue + 1, currentValue: index});
+            
+        // }
       }
 
-      const onSearchKeywordChange = (keyword) => {
-         setKeyword(keyword);
+      const updateKeyword = (keyword) => {
+        console.log('keyword', keyword);
+        setFilter(prevObj => ({
+            state :{
+                ...prevObj.state,
+                query : keyword
+            }      
+                        
+        }));
       }
 
       
@@ -112,7 +138,7 @@ const Contentpanel = () => {
     return (
         <Content>
                     <div className="container">
-                        <SearchBar></SearchBar>
+                        <SearchBar updateKeyword = {updateKeyword}></SearchBar>
                     </div>
                     <div className="container">
                         <JobResults 
@@ -124,9 +150,10 @@ const Contentpanel = () => {
                         >                            
                         </JobResults>
                     </div>
-                    <div>
-                    <Pagination Current={1} defaultpageSize = {data.length % 5} total={(data.length / 5) * 10} onChange = {onIndexChange} />
-                    </div>
+                   
+                    <Col span={13} offset={5}>
+                    <Pagination defaultCurrent ={1} current = {pageIndex.currentValue} defaultpageSize = {data.length % 5} total={(data.length / 5) * 10} onChange = {onIndexChange} />
+      </Col>                
                 </Content>
     );
 };

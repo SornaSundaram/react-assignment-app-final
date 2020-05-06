@@ -4,6 +4,7 @@ import Icon from '@ant-design/icons';
 
 const FilterPanel = (props) => {
 
+    const [filterValue, setFilterValue] = useState(props.filterObject.state);
     console.log('loading');
     console.log(props);
     const menu = (
@@ -18,10 +19,11 @@ const FilterPanel = (props) => {
         </Menu>
     );
 
-    const [filterValue, setFilterValue] = useState(props.filterObject.state)
+    
 
     useEffect(() => {
         console.log('filtering');
+        console.log(props.filterObject.state);
         setFilterValue(props.filterObject.state);
         
     }, [props]);
@@ -56,6 +58,8 @@ const FilterPanel = (props) => {
         ['npm','react','webpack','html','js.css','java','spring','kafka','hadoop','spark','scala','oracle','mysql','nginx'].map((skill) => {
             skillsList.push(<Option key={skill}>{skill}</Option>);
         });;;
+
+        const job_TypeDefaultValue = filterValue.job_Type === null ? '' : filterValue.job_Type;
         
 
         return (
@@ -110,7 +114,7 @@ const FilterPanel = (props) => {
                             </Dropdown> */}
                             <Select
                              style = {{width: '220px'}}
-                             defaultValue = {filterValue.jobType}
+                             defaultValue = ''
                              placeholder="Select your Experience level"
                              onChange = {onJobTypeChange}
                             >
