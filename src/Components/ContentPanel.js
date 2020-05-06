@@ -10,6 +10,8 @@ const Contentpanel = () => {
 
     console.log('data loading');
     const [data, setData] = useState([]);
+    const [pageIndex,setPageIndex] = useState({minValue:0, maxValue: 5});
+    const [queryObject, setQueryObject] = useState({});
 
     useEffect(() => {
        
@@ -23,6 +25,18 @@ const Contentpanel = () => {
      
         fetchData();
       }, []);
+
+      const onIndexChange = (index) => {
+
+        if (index <= 1)
+        {
+            setPageIndex({minValue:0, maxValue: 5});
+        }
+        else
+        {
+            setPageIndex({minValue:pageIndex.maxValue, maxValue: 5 * index});
+        }
+      }
      
 
 
@@ -35,10 +49,10 @@ const Contentpanel = () => {
                         <SearchBar></SearchBar>
                     </div>
                     <div className="container">
-                        <JobResults jobdata = {data}></JobResults>
+                        <JobResults total = {data.length} jobdata = {data.length > 0 ? data.slice(pageIndex.minValue, pageIndex.maxValue) : data}></JobResults>
                     </div>
                     <div>
-                    <Pagination defaultCurrent={1} total={50} />
+                    <Pagination Current={1} defaultpageSize = {data.length % 5} total={40} onChange = {onIndexChange} />
                     </div>
                 </Content>
     );

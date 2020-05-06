@@ -1,6 +1,10 @@
 .searchBar{
-  box-shadow: 0 2px 4px rgba(0, 0, 1, 0.2) !important;
-  
+  box-shadow: 0 2px 4px rgba(0, 0, 1, 0.2) !important; 
+}
+
+.ant-input-search-button {
+  background-color: #55a8fd;
+
 }
 
 .ant-layout-content{
@@ -57,7 +61,7 @@ width: 60%;
 }
 
 .ant-btn-primary{
-  height: 54px !important;
+  height: 56px !important;
 }
 
 .ant-btn-primary:hover, .ant-btn-primary:focus{
