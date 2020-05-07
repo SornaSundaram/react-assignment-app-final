@@ -1,36 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Col, Select, Checkbox, Dropdown, Button, Slider, InputNumber } from 'antd';
+import { Select, Checkbox, Slider, InputNumber } from 'antd';
 import Icon from '@ant-design/icons';
 
 const FilterPanel = (props) => {
 	const [ filterValue, setFilterValue ] = useState(props.filterObject.state);
-	console.log('loading');
-	console.log(props);
-	const menu = (
-		<Menu>
-			<Menu.Item key="full-time">Three years</Menu.Item>
-			<Menu.Item key="part-time">Part Time</Menu.Item>
-			<Menu.Item key="hourly">Hourly</Menu.Item>
-		</Menu>
-	);
 
 	useEffect(
 		() => {
-			console.log('filtering');
-			console.log(props.filterObject.state);
 			setFilterValue(props.filterObject.state);
 		},
 		[ props ]
 	);
 
 	const onLocationsChange = (loc) => {
-		console.log('working');
 		props.updateLocation(loc);
 	};
 
 	const onJobTypeChange = (type) => {
-		console.log('jobchanged');
-
 		props.updateJobType(type);
 	};
 
@@ -55,8 +41,9 @@ const FilterPanel = (props) => {
 		'Hyderabad',
 		'Philliphines',
 		'Singapore'
-	].map((skill) => {
-		locationsList.push(<Option key={skill}>{skill}</Option>);
+	].map((loc) => {
+		locationsList.push(<Option key={loc}>{loc}</Option>);
+		return locationsList;
 	});
 
 	const skillsList = [];
@@ -77,9 +64,8 @@ const FilterPanel = (props) => {
 		'nginx'
 	].map((skill) => {
 		skillsList.push(<Option key={skill}>{skill}</Option>);
+		return skillsList;
 	});
-
-	const job_TypeDefaultValue = filterValue.job_Type === null ? '' : filterValue.job_Type;
 
 	return (
 		<div className="filters-sidebar">
@@ -106,7 +92,7 @@ const FilterPanel = (props) => {
 						defaultValue={[]}
 						style={{ width: '100%' }}
 					>
-						{skillsList.map((skill) => <Option key={skill} />)}
+						{skillsList}
 					</Select>
 				</div>
 			</div>
@@ -143,15 +129,10 @@ const FilterPanel = (props) => {
 					</label>
 				</div>
 				<div>
-					{/* <Dropdown overlay={menu} trigger={['click']} onChange = {onJobTypeChange}>
-                                <Button>
-                                    Select a Job Type <Icon type="down" />
-                                </Button>
-                            </Dropdown> */}
 					<Select
 						style={{ width: '220px' }}
-						defaultValue=""
-						placeholder="Select your Experience level"
+						defaultValue= {filterValue.job_Type}
+						placeholder="Select a Job Type"
 						onChange={onJobTypeChange}
 					>
 						<Option key="Full Time" value="Full Time">
@@ -174,11 +155,11 @@ const FilterPanel = (props) => {
 					</label>
 				</div>
 				<div className="payRateInputBoxes">
-					<InputNumber min={1} max={100} className="minInputBox" /> <span>-</span>
-					<InputNumber min={1} max={100} />
+					<InputNumber min={1} max={100} value = {40} className="minInputBox" /> <span>-</span>
+					<InputNumber min={1} max={100} value = {70}/>
 				</div>
 				<div>
-					<Slider min={1} max={100} className="maxInputBox" />
+					<Slider min={1} max={100} range defaultValue={[40,70]} className="maxInputBox" />
 				</div>
 				<div style={{ position: 'relative' }}>
 					<div style={{ position: 'absolute', left: '7px', fontWeight: '500' }}>1</div>
@@ -196,11 +177,21 @@ const FilterPanel = (props) => {
 					</label>
 				</div>
 				<div>
-					<Dropdown overlay={menu} trigger={[ 'click' ]}>
-						<Button>
-							Select your Experience level <Icon type="down" />
-						</Button>
-					</Dropdown>
+				<Select
+						style={{ width: '220px' }}
+						defaultValue=""
+						placeholder="Select Your Experience Level"
+					>
+						<Option key="Junior" value="0 - 3 years">
+						0 - 3 years
+						</Option>
+						<Option key="Senior" value="3 - 6 years">
+						3 - 6 years
+						</Option>
+						<Option key="Lead" value="More than 6 Years">
+						More than 6 Years
+						</Option>
+					</Select>
 				</div>
 			</div>
 			<div className="form-group">

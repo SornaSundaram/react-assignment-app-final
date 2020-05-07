@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Layout, Pagination, Col } from 'antd';
 import SearchBar from './SearchPanel';
 import axios from '../ApiJobData';

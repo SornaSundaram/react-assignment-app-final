@@ -1,5 +1,4 @@
 import React from 'react';
-import { Col } from 'antd';
 import timeTrackerLogo from '../images/time_track_logo.png';
 
 const rightSidePanel = () => {
