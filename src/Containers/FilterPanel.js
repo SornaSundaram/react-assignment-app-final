@@ -3,8 +3,8 @@ import { Select, Checkbox, Slider, InputNumber } from 'antd';
 import Icon from '@ant-design/icons';
 
 const FilterPanel = (props) => {
-	const [ filterValue, setFilterValue ] = useState(props.filterObject.state);
-	const [ payRate, setPayRate ] = useState({state: { minValue: 40, maxValue: 70 }});
+	const [ filterValue, setFilterValue ] = useState(props.filterObject.state); //props from content panel gets tored here
+	const [ payRate, setPayRate ] = useState({state: { minValue: 40, maxValue: 70 }}); //state for payrate
 
 	useEffect(
 		() => {

@@ -4,12 +4,11 @@ import './App.css';
 import HomePage from './Components/Home';
 
 function App() {
-  return (
-    <div>
-      
-      <HomePage></HomePage>
-    </div>
-  );
+	return (
+		<div>
+			<HomePage />
+		</div>
+	);
 }
 
 export default App;
