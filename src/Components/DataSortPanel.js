@@ -4,10 +4,7 @@ import DataPanel from './DataPanel';
 
 const Option = Select.Option;
 const dataSortPanel = (props) => {
-	console.log('afterprops');
-	console.log(props.items);
-	console.log(props.items.map((item) => console.log('working')));
-
+	
 	return (
 		<div>
 			<Col span={12}>

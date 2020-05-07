@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Tag } from 'antd';
 
-const dataPanel = (props) => {
+const DataPanel = (props) => {
+
+	useEffect(() => {
+		
+	}, [props]);
+
 	return (
 		<div className="main-details">
 			<div>
@@ -36,4 +41,4 @@ const dataPanel = (props) => {
 	);
 };
 
-export default dataPanel;
+export default DataPanel;

@@ -4,6 +4,7 @@ import Icon from '@ant-design/icons';
 
 const FilterPanel = (props) => {
 	const [ filterValue, setFilterValue ] = useState(props.filterObject.state);
+	const [ payRate, setPayRate ] = useState({state: { minValue: 40, maxValue: 70 }});
 
 	useEffect(
 		() => {
@@ -26,6 +27,24 @@ const FilterPanel = (props) => {
 
 	const clearLocation = () => {
 		props.updateLocation(null);
+	};
+
+	const changeMinPayRate = (minVal) => {
+		setPayRate((prevUrl) => ({
+			state: {
+				...prevUrl.state,
+				minValue: minVal
+			}
+		}));
+	};
+
+	const changeMaxPayRate = (maxVal) => {
+		setPayRate((prevUrl) => ({
+			state: {
+				...prevUrl.state,
+				maxValue: maxVal
+			}
+		}));
 	};
 
 	const Option = Select.Option;
@@ -131,7 +150,7 @@ const FilterPanel = (props) => {
 				<div>
 					<Select
 						style={{ width: '220px' }}
-						defaultValue= {filterValue.job_Type}
+						defaultValue={filterValue.job_Type}
 						placeholder="Select a Job Type"
 						onChange={onJobTypeChange}
 					>
@@ -155,11 +174,12 @@ const FilterPanel = (props) => {
 					</label>
 				</div>
 				<div className="payRateInputBoxes">
-					<InputNumber min={1} max={100} value = {40} className="minInputBox" /> <span>-</span>
-					<InputNumber min={1} max={100} value = {70}/>
+					<InputNumber min={1} max={100} value={payRate.state.minValue} className="minInputBox" onChange = {changeMinPayRate} />
+					<span>-</span>
+					<InputNumber min={1} max={100} value={payRate.state.maxValue} className="maxInputBox" onChange = {changeMaxPayRate} />
 				</div>
 				<div>
-					<Slider min={1} max={100} range defaultValue={[40,70]} className="maxInputBox" />
+					<Slider min={1} max={100} range defaultValue={[ payRate.state.minValue, payRate.state.maxValue ]} value = {[ payRate.state.minValue, payRate.state.maxValue ]} />
 				</div>
 				<div style={{ position: 'relative' }}>
 					<div style={{ position: 'absolute', left: '7px', fontWeight: '500' }}>1</div>
@@ -177,19 +197,15 @@ const FilterPanel = (props) => {
 					</label>
 				</div>
 				<div>
-				<Select
-						style={{ width: '220px' }}
-						defaultValue=""
-						placeholder="Select Your Experience Level"
-					>
+					<Select style={{ width: '220px' }} defaultValue="" placeholder="Select Your Experience Level">
 						<Option key="Junior" value="0 - 3 years">
-						0 - 3 years
+							0 - 3 years
 						</Option>
 						<Option key="Senior" value="3 - 6 years">
-						3 - 6 years
+							3 - 6 years
 						</Option>
 						<Option key="Lead" value="More than 6 Years">
-						More than 6 Years
+							More than 6 Years
 						</Option>
 					</Select>
 				</div>

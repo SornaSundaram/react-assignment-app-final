@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Layout, Pagination, Col } from 'antd';
 import SearchBar from './SearchPanel';
 import axios from '../ApiJobData';
@@ -7,27 +7,19 @@ import JobResults from './JobResults';
 const { Content } = Layout;
 
 const Contentpanel = () => {
-	console.log('data loading');
 	const [ data, setData ] = useState([]);
-	const [ pageIndex, setPageIndex ] = useState({ minValue: 0, maxValue: 5, currentValue: 1 });
+	const [ pageIndex, setPageIndex ] = useState({ minValue: 1, maxValue: 5, currentValue: 1 });
 	const [ filter, setFilter ] = useState({ state: { job_type: null, location: null, query: null } });
 	const [ apiUrl, setApiUrl ] = useState({ query: { value: '/' } });
+	const [ paginatedData, setPagination ] = useState([]);
 
 	const updateLocation = (locationval) => {
-		console.log('reached');
-
-		// queryObject.location = locationval[0];
-		console.log(filter);
 		setFilter((prevObj) => ({
 			state: {
 				...prevObj.state,
 				location: locationval[0]
 			}
 		}));
-		console.log(filter.state.location);
-
-		console.log('called');
-		console.log(apiUrl);
 	};
 
 	const updateJobType = (job_typeVal) => {
@@ -41,23 +33,30 @@ const Contentpanel = () => {
 
 	useEffect(
 		() => {
-			console.log('dataeffect');
-			console.log(apiUrl);
 			async function fetchData() {
-				const result = await axios(apiUrl.query.value);
-				console.log(result.data);
+				const result = await axios.get(apiUrl.query.value);
 				setData(result.data);
 			}
 
 			fetchData();
+
+			return () => {
+				console.log('componentWillUnmount');
+			};
 		},
 		[ apiUrl ]
 	);
 
 	useEffect(
 		() => {
-			console.log('urleffect');
+			pagination();
+		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[ data ]
+	);
 
+	useEffect(
+		() => {
 			let keysListval = Object.keys(filter.state).reduce((val, key) => {
 				if (filter.state[key] != null) {
 					val.push(key);
@@ -72,7 +71,6 @@ const Contentpanel = () => {
 				[ 'search?' ]
 			);
 
-			console.log(typeof queryString);
 			queryString = String(queryString).substring(0, queryString.length - 1);
 			console.log(queryString);
 			setApiUrl((prevUrl) => ({
@@ -85,27 +83,24 @@ const Contentpanel = () => {
 		[ filter ]
 	);
 
-	const onIndexChange = (index) => {
-		console.log(index);
-		if (index <= 1) {
-			setPageIndex({ minValue: 0, maxValue: 5, currentValue: 1 });
-		} else {
-			console.log(index);
-			setPageIndex({ minValue: pageIndex.maxValue, maxValue: pageIndex.maxValue + 5, currentValue: index });
-		}
-	};
-
 	const updateKeyword = (keyword) => {
-		console.log('keyword', keyword);
 		setFilter((prevObj) => ({
 			state: {
 				...prevObj.state,
-				query: keyword
+				query: keyword !== '' ? keyword : null
 			}
 		}));
 	};
 
-	console.log(data);
+	const pagination = (page) => {
+		page = page || 1;
+		let per_page = 5;
+		let offset = (page - 1) * per_page;
+		let total_pages = Math.ceil(data.length / 5);
+		let paginatedItems = data.slice(offset).slice(0, per_page);
+		setPageIndex({ minValue: 1, maxValue: total_pages, currentValue: page });
+		setPagination(paginatedItems);
+	};
 
 	return (
 		<Content>
@@ -118,7 +113,7 @@ const Contentpanel = () => {
 					updateLocation={updateLocation}
 					filterObject={filter}
 					total={data.length}
-					jobdata={data.length > 0 ? data.slice(pageIndex.minValue, pageIndex.maxValue) : data}
+					jobdata={paginatedData}
 				/>
 			</div>
 
@@ -128,7 +123,7 @@ const Contentpanel = () => {
 					current={pageIndex.currentValue}
 					defaultpageSize={data.length % 5}
 					total={data.length / 5 * 10}
-					onChange={onIndexChange}
+					onChange={pagination}
 				/>
 			</Col>
 		</Content>
