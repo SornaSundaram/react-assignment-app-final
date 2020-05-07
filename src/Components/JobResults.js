@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import RightSidePanel from './RightSidePanel';
-import FilterPanel from './FilterPanel';
+import FilterPanel from '../Containers/FilterPanel';
 import DataSortPanel from './DataSortPanel';
 
 const jobResults = (props) => {

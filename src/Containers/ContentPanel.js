@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Pagination, Col } from 'antd';
-import SearchBar from './SearchPanel';
 import axios from '../ApiJobData';
-import JobResults from './JobResults';
+import JobResults from '../Components/JobResults';
+import SearchBar from '../Components/SearchPanel'
 
 const { Content } = Layout;
 
