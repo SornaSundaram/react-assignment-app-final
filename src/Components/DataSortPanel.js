@@ -33,7 +33,7 @@ const dataSortPanel = (props) => {
 					</div>
 					<div className="search-result">
 						{props.items.map((item) => (
-							<DataPanel key={item.title + item.jobType + item.location} data={item} />
+							<DataPanel key={item.title + item.jobType + item.location + item.id} data={item} />
 						))}
 					</div>
 				</div>

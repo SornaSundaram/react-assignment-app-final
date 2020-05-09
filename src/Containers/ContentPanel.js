@@ -105,6 +105,7 @@ const Contentpanel = () => {
 		let paginatedItems = data.slice(offset).slice(0, per_page);
 		setPageIndex({ minValue: 1, maxValue: total_pages, currentValue: page });
 		setPagination(paginatedItems);
+		console.log(paginatedItems);
 	};
 
 	return (
